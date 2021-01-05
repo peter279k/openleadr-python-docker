@@ -1,0 +1,30 @@
+name: Docker publish for OpenLEADR Python
+
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  docker_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker 3.9 image
+        run: cd 3.9/ && docker build -t 3.9 .
+      - name: Tags 3.9
+        run: |
+          docker tag 3.9 ${{ secrets.DOCKER_USER }}/openleadr-python:3.9
+      - name: Publish Docker 3.9 image
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/openleadr-python:3.9
+      - name: Tags latest
+        run: |
+          docker tag 3.9 ${{ secrets.DOCKER_USER }}/openleadr-python:latest
+      - name: Publish Docker latest image
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/openleadr-python:latest

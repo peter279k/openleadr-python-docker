@@ -1,0 +1,15 @@
+name: Docker build for OpenLEADR Python
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  docker_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build Docker 3.8 image
+        run: cd 3.8/ && docker build -t 3.8 .
