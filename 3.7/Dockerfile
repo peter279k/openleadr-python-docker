@@ -8,4 +8,4 @@ RUN git clone https://github.com/openleadr/openleadr-python \
 
 ENTRYPOINT ["bash"]
 
-CMD ["-c", "cd openleadr-python && source ./python_env/bin/activate"]
+CMD ["-c", "cd openleadr-python && source ./python_env/bin/activate && exec bash"]
