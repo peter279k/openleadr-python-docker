@@ -6,6 +6,6 @@ RUN git clone https://github.com/openleadr/openleadr-python \
 && ./python_env/bin/pip3 install -e . \
 && ./python_env/bin/pip3 install -r dev_requirements.txt
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["bash"]
 
 CMD ["-c", "cd openleadr-python && source ./python_env/bin/activate"]
