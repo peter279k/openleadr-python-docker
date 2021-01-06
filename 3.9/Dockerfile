@@ -5,6 +5,6 @@ RUN git clone https://github.com/openleadr/openleadr-python \
 && pip3 install -e . \
 && pip3 install -r dev_requirements.txt
 
-WORKDIR openleadr-python
+WORKDIR /openleadr-python
 
 ENTRYPOINT ["/bin/bash"]
